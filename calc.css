@@ -1,0 +1,135 @@
+    ::selection {
+        background: #000000; /* WebKit/Blink Browsers */
+    }
+    ::-moz-selection {
+        background: #000000; /* Gecko Browsers */
+    }
+    #label{
+        color: aliceblue;
+        font-size: 37px;
+        height: 15%;
+        font-family: sans-serif;
+        float: left;
+        width: 70%;
+    }
+    #infoBtn{
+        float: right;
+        text-align: center;
+        position: relative;
+        right: 75%;
+        border-radius: 50%;
+        color: aliceblue;
+        font-family: 'Georgia';
+        font-style: bold;
+        background-color: rgb(27, 26, 26);
+        background-size: cover;
+        width: 5%;
+        height: 50%;
+        border: none;
+    }
+    #panel{
+        padding: 10px;
+        width: 50%;
+        font-size: 17px;
+        color: rgb(0, 183, 255);
+        border: 5px rgb(88, 2, 2) double;
+        display: none;
+    }
+
+    #expDltButt{
+        color: rgb(0, 183, 255);
+        background-color: rgb(37, 36, 36);
+        font-size: 25px;
+        height: 10%;
+        opacity: 1;
+        margin: 0px 0px 0px 0px;
+        border: black thin;
+        position: relative;
+        left:0;
+        border-radius: 10%;
+    }
+    #exeSpace {
+        width: 100%;
+        height: 25%;
+        position: relative;
+        color: aliceblue;
+        text-align:right;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #expres {
+        font-size: 20px;
+        width: 60%;
+        color: aliceblue;
+        text-align:right;
+        background-color: rgb(37, 36, 36);
+        border-style: none;
+    }
+    #result {
+        text-align:right;
+        width: 60%;
+        font-size: 47px;
+        color: aliceblue;
+        background-color: rgb(37, 36, 36);
+        border-style: none;
+    }
+    .numButton{
+        height: 100%;
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+        font-size: 25px;
+        color: aliceblue;
+        background-color: rgb(0, 0, 0);
+        border: black thin;
+        transition-duration: 0.3s;
+    }
+    .numButton:hover {
+        opacity: 0.9;
+        background-color: rgb(73, 73, 73);
+        color: rgb(204, 204, 204);
+    }
+    .numButton:active {
+        opacity: 0.6;
+        transform: translateY(2px);
+    }
+    .calButton{
+        height: 100%;
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+        font-size: 25px;
+        color: aliceblue;
+        background-color: rgb(32, 32, 32);
+        border: black thin;
+        transition-duration: 0.3s;
+    }
+    .calButton:hover {
+        opacity: 0.9;
+        background-color: rgb(41, 41, 85);
+        color: rgb(204, 204, 204);
+    }
+    .calButton:active {
+        opacity: 0.6;
+        transform: translateY(2px);
+    }
+    .opButton{
+        height: 100%;
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+        font-size: 25px;
+        color: aliceblue;
+        background-color: rgb(32, 32, 32);
+        border: black thin;
+        transition-duration: 0.3s;
+
+    }
+    .opButton:hover {
+        opacity: 0.9;
+        background-color: rgb(155, 0, 0);
+        color: rgb(204, 204, 204);
+    }
+    .opButton:active {
+        opacity: 0.6;
+        transform: translateY(2px);
+    }
+    table td {
+        width: 25%;
+    }

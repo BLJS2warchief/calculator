@@ -1,0 +1,226 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="icon.jpg">
+    <title>
+        Calculator
+    </title>
+    <link rel="stylesheet" type="text/css" href="calc.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        resultAns = 0;
+        function enterNum(num) {
+            rslt = document.getElementById("result");
+            checkValid();
+            if(resultAns == 1){
+                rslt.value = "";
+                document.getElementById("expres").value = "";
+            }
+            if(rslt.value == 0) {
+                rslt.value = "";
+            }
+            rslt.value += num;
+            resultAns = 0;
+        }
+        function evlt(oper) {
+                exValue = document.getElementById("expres").value;
+                num1 = document.getElementById("result").value;
+                checkValid();
+                if((rslt.value != 0 && !isNaN(exValue.substr(exValue.length - 1, exValue.length))) || exValue == ""){
+                    switch(oper) {
+                        case "add":
+                            document.getElementById("expres").value += num1 + " + ";
+                            document.getElementById("result").value = 0;
+                            break;
+                        case "subtract":
+                            document.getElementById("expres").value += num1 + " - ";
+                            document.getElementById("result").value = 0;
+                            break;
+                        case "multiply":
+                            document.getElementById("expres").value += num1 + " * ";
+                            document.getElementById("result").value = 0;
+                            break;
+                        case "divide":
+                            document.getElementById("expres").value += num1 + " / ";
+                            document.getElementById("result").value = 0;
+                            break;
+                        case "sqrt":
+                            document.getElementById("expres").value = "sqrt(" + num1 + ")";
+                            document.getElementById("result").value = Math.sqrt(document.getElementById("result").value);
+                            resultAns = 1;
+                            break;
+                        case "square":
+                            document.getElementById("expres").value = "sqr(" + num1 + ")";
+                            document.getElementById("result").value *= document.getElementById("result").value;
+                            resultAns = 1;
+                            break;
+                        case "reciprocal":
+                            document.getElementById("expres").value = "";
+                            document.getElementById("expres").value += "1 / " +  num1;
+                            document.getElementById("result").value = 1 / document.getElementById("result").value;
+                            resultAns = 1;
+                            break;
+                    }
+                }
+                else if(!isNaN(exValue.substr(exValue.length - 1, exValue.length)) && exValue.substr(exValue.length - 1, exValue.length) != " "){ 
+                    switch(oper) {
+                        case "add":
+                            document.getElementById("expres").value += " + ";
+                            document.getElementById("result").value = 0;
+                            break;
+                        case "subtract":
+                            document.getElementById("expres").value += " - ";
+                            document.getElementById("result").value = 0;
+                            break;
+                        case "multiply":
+                            document.getElementById("expres").value += " * ";
+                            document.getElementById("result").value = 0;
+                            break;
+                        case "divide":
+                            document.getElementById("expres").value += " / ";
+                            document.getElementById("result").value = 0;
+                            break;
+                    }
+                }
+        }
+        function modulo(){
+            if(rslt.value != 0){
+                    num1 = document.getElementById("result").value;
+                    document.getElementById("expres").value += num1 + " % ";
+                    document.getElementById("result").value = 0;
+            }
+        }
+        function clearDat(param){
+            switch(param){
+                case "Res":
+                    document.getElementById("result").value = 0;
+                    break;
+                case "All":
+                    document.getElementById("expres").value = "";
+                    document.getElementById("result").value = 0;
+                    break;
+            }
+        }
+        function answ(){
+            num1 = document.getElementById("result").value;
+            value = document.getElementById("result").value;
+            express = document.getElementById("expres").value;
+            if(value == 0) {
+                //alert(document.getElementById("expres").value);
+                document.getElementById("result").value = eval(express);
+                document.getElementById("expres").value = "";
+                resultAns = 1;
+            }
+            else {
+                document.getElementById("expres").value += num1;
+                //alert(document.getElementById("expres").value);
+                document.getElementById("result").value = eval(document.getElementById("expres").value);
+                document.getElementById("expres").value = "";
+                resultAns = 1;
+            }
+        }
+        function dlt(){
+            value = document.getElementById("result").value;
+            if(resultAns == 0){
+                if(value != 0){
+                    document.getElementById("result").value = value.substr(0, value.length - 1);
+                    if(document.getElementById("result").value == ""){
+                        document.getElementById("result").value = 0;
+                    }
+                }
+            }
+        }
+        function plusMinus() {
+            if(document.getElementById("result").value != 0){
+                document.getElementById("result").value = -(document.getElementById("result").value);
+            }
+        }
+        function checkValid(){
+            if(document.getElementById("result").value == "NaN"){
+                document.getElementById("result").value = 0;
+                document.getElementById("expres").value = "";
+                return true;
+            }
+        }
+        function deleteExpres() {
+            exValue = document.getElementById("expres").value;
+            if(exValue.substr(exValue.length - 2, exValue.length - 1) != " " && isNaN(exValue.substr(exValue.length - 2, exValue.length - 1))){
+                if(exValue != 0){
+                    document.getElementById("expres").value = exValue.substr(0, exValue.length - 3);
+                    //alert(document.getElementById("expres").value);
+                }
+            }
+        }
+    </script>
+    <script> 
+        $(document).ready(function(){
+            var xdltBtn = $("#expDltButt");
+            xdltBtn.click(function(){
+                xdltBtn.animate({top: '20px'}, "fast");
+                xdltBtn.animate({left: '30px'}, "fast");
+                xdltBtn.animate({left: '0px'}, "fast");
+                xdltBtn.animate({top: '-0px'}, "fast");
+            });
+        });
+
+        $(document).ready(function(){
+            $("#infoBtn").click(function(){
+                $("#panel").slideToggle("fast");
+            });
+        });
+    </script> 
+</head>
+
+<body style="background-color: rgb(37, 36, 36);margin: 0;";>
+    <div name = "label" id = "label">
+        Standard
+        <div id = "infoBtn" class="popovr">i</div>
+        <div id = "panel">It is to be noted that the '%' is a modulo operator which is used in the same way as the addition and other similar operators. <br> <hr><hr> Please delete the operator using the scissors before changing it and make sure that the number you are typing is set to zero by deleting it.</div>        
+    </div>
+    <div>
+        <input type="button" class="expDltButt"  name="expDltButt" id ="expDltButt" value="&#9988;"  onclick="deleteExpres()">
+    </div>
+    <div name = "exeSpace" id = "exeSpace">
+        <input type="text" name = "expres" id = "expres" disabled>
+        <input type="text" name = "result" id = "result" value = "0" disabled>
+    </div>
+    <table style="width: 100%; height: 65%;margin-top: 0;border:0px;position: relative;top: 0%;" cellspacing = "0px" cellpadding = "1px">
+        <tr>
+            <td> <input type="button" class="calButton"  name="button1" id ="button1" value="%"  onclick="modulo()"> </td>
+            <td> <input type="button" class="calButton" name="button2" id ="button2" value="&#8730;" onclick="evlt('sqrt')"> </td>
+            <td> <button type="button" class="calButton"  name="button3" id ="button3" value="x2" onclick="evlt('square')">x<sup>2</sup></button> </td>
+            <td> <input type="button" class="calButton"  name="button3" id ="button3" value="1/x" onclick="evlt('reciprocal')"> </td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="calButton" name="button4" id ="button4" value="CE" onclick="clearDat('Res')"> </td>
+            <td> <input type="button" class="calButton"  name="button5" id ="button5" value="C" onclick="clearDat('All')"> </td>
+            <td> <input type="button" class="calButton"  name="button6" id ="button6" value="&#9003;" onclick="dlt()"> </td>
+            <td> <input type="button" class="opButton"  name="opButton" id ="opButton" value="&divide;" onclick="evlt('divide')"> </td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="7" onclick="enterNum(7)"> </td>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="8" onclick="enterNum(8)"> </td>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="9" onclick="enterNum(9)"> </td>
+            <td> <input type="button" class="opButton"  name="opButton" id ="opButton" value="X" onclick="evlt('multiply')"> </td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="4" onclick="enterNum(4)"> </td>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="5" onclick="enterNum(5)"> </td>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="6" onclick="enterNum(6)"> </td>
+            <td> <input type="button" class="opButton"  name="opButton" id ="opButton" value="-" onclick="evlt('subtract')"> </td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value=" 1" onclick="enterNum(1)"> </td>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="2" onclick="enterNum(2)"> </td>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="3" onclick="enterNum(3)"> </td>
+            <td> <input type="button" class="opButton"  name="opButton" id ="opButton" value="+" onclick="evlt('add')"> </td>
+        </tr>
+        <tr>
+            <td> <input type="button" class="calButton"  name="button7" id ="button7" value="&#177;" onclick="plusMinus()"> </td>
+            <td> <input type="button" class="numButton"  name="numButton" id ="numButton" value="0" onclick="enterNum(0)"> </td>
+            <td> <input type="button" class="calButton"  name="button9" id ="button9" value="." onclick="enterNum('.')"> </td>
+            <td> <input type="button" class="opButton"  name="opButton" id ="opButton" value="=" onclick="answ()"> </td>
+        </tr>
+    </table>
+</body>
+</html>
